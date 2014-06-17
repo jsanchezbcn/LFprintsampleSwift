@@ -13,7 +13,7 @@ import UIKit
 
 class PRPageRenderer:UIPrintPageRenderer{
     var scale:CGFloat=1.0
-    let kTolerance:CGFloat=0.5*72
+    let kTolerance:CGFloat=0.5*72 //half an inch tolerance to detect if it's needed to rotate or not.
 
     var pdfURL:NSURL?
     func initWithPDFPath(fileurl:NSURL)->PRPageRenderer {
