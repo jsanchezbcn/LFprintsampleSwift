@@ -1,10 +1,9 @@
 // Playground - noun: a place where people can play
 
 import UIKit
-var str = "Hello, playground1"
 
 
-
+//TBD create a bundle for the playground
 //let url = NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")
 let url="/Users/jsanchez/Documents/swift/Resources/Dsize.pdf"
 
@@ -207,7 +206,6 @@ class printView:UIView{
         
         if(scale<1){
             var context = UIGraphicsGetCurrentContext()
-            //CGContextSaveGState(context)
             
             var message:NSString="";
             if(scale==0.5){
@@ -234,7 +232,6 @@ class printView:UIView{
             let emptyDictionary = Dictionary<String, Float>()
             
             
-            //let attrsDictionary = Dictionary<NSString,AnyObject>()
             let attrsDictionary = [NSFontAttributeName:font,NSBaselineOffsetAttributeName:1.0,NSForegroundColorAttributeName:UIColor(white: 0.8, alpha: 0.3)]
             
             
@@ -243,16 +240,11 @@ class printView:UIView{
             let transform1 = CGAffineTransformMakeRotation(-45.0 * M_PI/180.0);
             CGContextConcatCTM(context, transform1);
             */
-            
-            //messagesize=[message sizeWithAttributes:attrsDictionary];
+   
             message.drawAtPoint(initpoint, withAttributes: attrsDictionary)
             
-            //CGContextRestoreGState(context);
             
         }
-
-        
-    
 
     
     
@@ -263,10 +255,6 @@ class printView:UIView{
     
     
 }
-
-
-
-
 
 
 
@@ -292,8 +280,6 @@ for item in rollsize{
     view=printView(frame: CGRectMake(0, 0, item*72, lenght))
     
     
-    //view.backgroundColor=UIColor(red: 255, green: 0, blue: 0, alpha: 1)
-    //renderPDFInFrame(view.frame)
     views.append(view)
     
     
