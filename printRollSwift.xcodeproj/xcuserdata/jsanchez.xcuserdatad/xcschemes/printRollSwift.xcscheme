@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A81E873194CACFE00DCD474"
+               BlueprintIdentifier = "2A9C73F819DAA66D00D224D3"
                BuildableName = "printRollSwift.app"
                BlueprintName = "printRollSwift"
+               ReferencedContainer = "container:printRollSwift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2A9C740D19DAA66E00D224D3"
+               BuildableName = "printRollSwiftTests.xctest"
+               BlueprintName = "printRollSwiftTests"
                ReferencedContainer = "container:printRollSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2A81E885194CACFE00DCD474"
+               BlueprintIdentifier = "2A9C740D19DAA66E00D224D3"
                BuildableName = "printRollSwiftTests.xctest"
                BlueprintName = "printRollSwiftTests"
                ReferencedContainer = "container:printRollSwift.xcodeproj">
@@ -42,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A81E873194CACFE00DCD474"
+            BlueprintIdentifier = "2A9C73F819DAA66D00D224D3"
             BuildableName = "printRollSwift.app"
             BlueprintName = "printRollSwift"
             ReferencedContainer = "container:printRollSwift.xcodeproj">
@@ -61,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A81E873194CACFE00DCD474"
+            BlueprintIdentifier = "2A9C73F819DAA66D00D224D3"
             BuildableName = "printRollSwift.app"
             BlueprintName = "printRollSwift"
             ReferencedContainer = "container:printRollSwift.xcodeproj">
@@ -79,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2A81E873194CACFE00DCD474"
+            BlueprintIdentifier = "2A9C73F819DAA66D00D224D3"
             BuildableName = "printRollSwift.app"
             BlueprintName = "printRollSwift"
             ReferencedContainer = "container:printRollSwift.xcodeproj">

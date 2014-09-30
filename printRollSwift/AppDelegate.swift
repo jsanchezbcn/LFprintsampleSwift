@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  printRollSwift
 //
-//  Created by Jose A Sanchez on 14/06/14.
+//  Created by Jose A Sanchez on 04/06/14.
 //  Copyright (c) 2014 Jose A Sanchez. All rights reserved.
 //
 

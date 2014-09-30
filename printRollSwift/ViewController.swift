@@ -22,7 +22,7 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pdfStringURL=NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")
-        let pdfURL=NSURL.fileURLWithPath(pdfStringURL)
+        let pdfURL=NSURL.fileURLWithPath(pdfStringURL!)
         document=CGPDFDocumentCreateWithURL(pdfURL)
         
         docPageRef = CGPDFDocumentGetPage(document, 1);
@@ -31,7 +31,7 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
         height = CGPDFPageGetBoxRect(docPageRef, kCGPDFMediaBox).height
         var theWebView:UIWebView=UIWebView(frame: CGRect(x: 0,y: 40,width: self.view.frame.width,height: self.view.frame.height-300))
         theWebView.scalesPageToFit=true
-        theWebView.loadRequest(NSURLRequest(URL: pdfURL))
+        theWebView.loadRequest(NSURLRequest(URL: pdfURL!))
         
 
         self.view.addSubview(theWebView)
@@ -48,19 +48,36 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     @IBAction func print(sender : AnyObject) {
         
    
-        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")) as NSData
-        var pic:UIPrintInteractionController = .sharedPrintController()
+        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as NSData
+        var pic:UIPrintInteractionController? = UIPrintInteractionController.sharedPrintController()
         
-        if(UIPrintInteractionController.canPrintData(myData)) {
+        if(UIPrintInteractionController.canPrintData(myData) && pic != nil) {
             
-            pic.delegate = self
+            pic!.delegate = self
            
-            pic.showsPageRange = false;
-            pic.printingItem = myData;
+            pic!.showsPageRange = false;
+            pic!.printingItem = myData;
             
+            
+            
+            /*
+            void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) = ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+                if (!completed && error) {
+                    NSLog(@"FAILED! error in  %@ with error %u", error.domain, error.code);
+                }
+            };
 
+*/
+            /*
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+                pic.presentAnimated(true, completionHandler: nil)
+                
+            }
+            else{
+                [pic presentAnimated:YES completionHandler:completionHandler];  // iPhone
+            }*/
             
-            pic.presentAnimated(true, completionHandler: nil)
+            pic!.presentAnimated(true, completionHandler: nil)
             
             
             
@@ -71,19 +88,19 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     
     @IBAction func instantprint(sender : AnyObject) {
         
-        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")) as NSData
-        var pic:UIPrintInteractionController = .sharedPrintController()
+        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as NSData
+        var pic:UIPrintInteractionController? = UIPrintInteractionController.sharedPrintController()
         
-        if(UIPrintInteractionController.canPrintData(myData)) {
+        if(UIPrintInteractionController.canPrintData(myData) && pic != nil) {
             
-            pic.delegate = self
+            pic!.delegate = self
             
             
             var pageRenderer=PRPageRenderer()
             pageRenderer.pdfURL=pdfURL
-            pic.printPageRenderer = pageRenderer
+            pic!.printPageRenderer = pageRenderer
             
-            pic.presentAnimated(true, completionHandler: nil)
+            pic!.presentAnimated(true, completionHandler: nil)
             
             
             
@@ -99,8 +116,8 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
         if (numberOfPages>0) {
             //TBD implement multipage PDFs
             let documentSize = CGPDFPageGetBoxRect(docPageRef,kCGPDFMediaBox);
-            
-            if (documentSize.size.height>documentSize.size.width && documentSize.size.height<=(paper.paperSize.width + kTolerance)) {
+        
+            if (documentSize.size.height > documentSize.size.width && documentSize.size.height<=(paper.paperSize.width + CGFloat(kTolerance))) {
                 //then rotate 90%
                 return documentSize.size.width+lengthOfMargins;
             }

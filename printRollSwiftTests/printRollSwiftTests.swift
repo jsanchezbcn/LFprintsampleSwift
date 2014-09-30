@@ -2,10 +2,11 @@
 //  printRollSwiftTests.swift
 //  printRollSwiftTests
 //
-//  Created by Jose A Sanchez on 14/06/14.
+//  Created by Jose A Sanchez on 30/09/14.
 //  Copyright (c) 2014 Jose A Sanchez. All rights reserved.
 //
 
+import UIKit
 import XCTest
 
 class printRollSwiftTests: XCTestCase {
