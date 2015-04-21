@@ -48,7 +48,7 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     @IBAction func print(sender : AnyObject) {
         
    
-        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as NSData
+        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as! NSData
         var pic:UIPrintInteractionController? = UIPrintInteractionController.sharedPrintController()
         
         if(UIPrintInteractionController.canPrintData(myData) && pic != nil) {
@@ -88,7 +88,7 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     
     @IBAction func instantprint(sender : AnyObject) {
         
-        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as NSData
+        var myData:NSData=NSData.dataWithContentsOfMappedFile(NSBundle.mainBundle().pathForResource("Dsize", ofType: "pdf")!) as! NSData
         var pic:UIPrintInteractionController? = UIPrintInteractionController.sharedPrintController()
         
         if(UIPrintInteractionController.canPrintData(myData) && pic != nil) {
@@ -109,7 +109,7 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
         
     }
     
-    func printInteractionController(printInteractionController: UIPrintInteractionController!, cutLengthForPaper paper: UIPrintPaper!) -> CGFloat{
+    func printInteractionController(printInteractionController: UIPrintInteractionController, cutLengthForPaper paper: UIPrintPaper) -> CGFloat{
         NSLog ("Roll of %f inches on the printer.",paper.printableRect.size.width/72) ;
         let lengthOfMargins = paper.paperSize.height - paper.printableRect.size.height;
         let numberOfPages = CGPDFDocumentGetNumberOfPages(document);
