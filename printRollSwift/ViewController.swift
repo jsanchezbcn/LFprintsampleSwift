@@ -25,10 +25,10 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
         let pdfURL=NSURL.fileURLWithPath(pdfStringURL!)
         document=CGPDFDocumentCreateWithURL(pdfURL)
         
-        docPageRef = CGPDFDocumentGetPage(document, 1);
+        docPageRef = CGPDFDocumentGetPage(document!, 1);
         
-        width = CGPDFPageGetBoxRect(docPageRef, CGPDFBox.MediaBox).width
-        height = CGPDFPageGetBoxRect(docPageRef, CGPDFBox.MediaBox).height
+        width = CGPDFPageGetBoxRect(docPageRef!, CGPDFBox.MediaBox).width
+        height = CGPDFPageGetBoxRect(docPageRef!, CGPDFBox.MediaBox).height
         let theWebView:UIWebView=UIWebView(frame: CGRect(x: 0,y: 40,width: self.view.frame.width,height: self.view.frame.height-300))
         theWebView.scalesPageToFit=true
         theWebView.loadRequest(NSURLRequest(URL: pdfURL))
@@ -79,10 +79,10 @@ class ViewController: UIViewController,UIPrintInteractionControllerDelegate {
     func printInteractionController(printInteractionController: UIPrintInteractionController, cutLengthForPaper paper: UIPrintPaper) -> CGFloat{
         NSLog ("Roll of %f inches on the printer.",paper.printableRect.size.width/72) ;
         let lengthOfMargins = paper.paperSize.height - paper.printableRect.size.height;
-        let numberOfPages = CGPDFDocumentGetNumberOfPages(document);
+        let numberOfPages = CGPDFDocumentGetNumberOfPages(document!);
         if (numberOfPages>0) {
             //TODO implement multipage PDFs
-            let documentSize = CGPDFPageGetBoxRect(docPageRef,CGPDFBox.MediaBox);
+            let documentSize = CGPDFPageGetBoxRect(docPageRef!,CGPDFBox.MediaBox);
         
             if (documentSize.size.height > documentSize.size.width && documentSize.size.height<=(paper.paperSize.width + CGFloat(kTolerance))) {
                 //then rotate 90%

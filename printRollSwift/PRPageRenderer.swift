@@ -22,7 +22,7 @@ class PRPageRenderer:UIPrintPageRenderer{
         
     }
     
-    override func numberOfPages()->Int{
+    override var numberOfPages:Int{
         return 1;
     }
     
@@ -38,9 +38,9 @@ class PRPageRenderer:UIPrintPageRenderer{
     func newDocumentWithUrl(url:CFURLRef)->CGPDFDocumentRef{
         let myDocument=CGPDFDocumentCreateWithURL(url)
         
-        if (CGPDFDocumentIsEncrypted (myDocument)
-            || !CGPDFDocumentIsUnlocked (myDocument)
-            || CGPDFDocumentGetNumberOfPages(myDocument) == 0) {
+        if (CGPDFDocumentIsEncrypted (myDocument!)
+            || !CGPDFDocumentIsUnlocked (myDocument!)
+            || CGPDFDocumentGetNumberOfPages(myDocument!) == 0) {
                 return myDocument!;
         }
         return myDocument!;
@@ -54,7 +54,7 @@ class PRPageRenderer:UIPrintPageRenderer{
             let document = self.newDocumentWithUrl(url!)
             let docPageRef = CGPDFDocumentGetPage(document, 1)
 
-            let pageRect=CGPDFPageGetBoxRect(docPageRef, CGPDFBox.MediaBox)
+            let pageRect=CGPDFPageGetBoxRect(docPageRef!, CGPDFBox.MediaBox)
             CGContextSetRGBFillColor(context, 1.0,1.0,1.0,1.0)
             CGContextFillRect(context, printableRect)
 
@@ -130,7 +130,7 @@ class PRPageRenderer:UIPrintPageRenderer{
             
             
             
-            CGContextDrawPDFPage(context, docPageRef)
+            CGContextDrawPDFPage(context, docPageRef!)
             
             CGContextRestoreGState(context)
         }
